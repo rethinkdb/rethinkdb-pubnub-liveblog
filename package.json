@@ -8,6 +8,7 @@
     "jsonwebtoken": "^5.0.0",
     "pubnub": "^3.7.10",
     "rethinkdb": "^2.0.0",
+    "rethinkdb-init": "0.0.3",
     "stylus": "^0.51.1"
   }
 }

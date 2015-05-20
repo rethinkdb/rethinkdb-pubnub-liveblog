@@ -6,6 +6,8 @@ var bodyParser = require("body-parser");
 var stylus = require("stylus");
 var jwt = require("express-jwt");
 
+require("rethinkdb-init")(r);
+
 var auth = require("./auth");
 var config = require("./config");
 
@@ -28,7 +30,11 @@ function validStr(s) {
   return typeof s === "string" && s.trim();
 }
 
-r.connect(config.database).then(function(conn) {
+r.init(config.database, [
+    {name: "users", indexes: ["username"]},
+    "updates"
+])
+.then(function(conn) {
   return r.table("updates").changes()("new_val").run(conn);
 })
 .then(function(changes) {
