@@ -1,0 +1,111 @@
+
+body
+  margin 0
+  font-family Open Sans
+  background #D7DBDE
+  display flex
+  flex-direction column
+  height 100%
+
+header
+  padding 5px
+  background #4A5557
+  color white
+  flex-shrink 0
+
+  .user
+    margin 10px
+    float right
+    font-size 14px
+
+    a
+      color white
+      text-decoration none
+      text-transform uppercase
+      letter-spacing 0.5px
+      margin 0 5px
+
+      &:hover
+        color #f5f5f5
+
+  h1
+    font-weight 300
+    text-transform uppercase
+    letter-spacing 3px
+    margin-left 10px
+
+.auth
+  padding 25px
+
+  .close
+    float right
+    color white
+    font-size 38px
+
+  .error
+    background #ffa794
+    padding 15px
+    margin 15px 2px 0
+    border-left 4px solid red
+    color #535353
+
+  input, button
+    height 40px
+    font-size 14px
+    margin 2px
+
+  input
+    max-width 300px
+    padding 10px
+
+  button
+    border 0
+    text-transform uppercase
+    background #868686
+    width 100px
+    color white
+
+#messages
+  margin 0
+  padding 25px
+  background #f5f5f5
+  color #a1a1a1
+  flex-grow 1
+  overflow scroll
+  list-style-type none
+
+  #warning
+    font-size 36px
+    text-align center
+
+  .sender
+    color darken(#a1a1a1, 20)
+    font-weight 600
+
+  .time
+    font-size 12px
+    margin-left 5px
+
+  .text
+    color darken(#a1a1a1, 5)
+    margin 5px 0 20px
+
+  li
+    margin 10px
+
+
+#messagebox
+  display flex
+  margin 0
+  background #f8f8f8
+  border-top 1px solid #dadada
+  flex-shrink 0
+
+  textarea
+    border 0
+    outline none
+    padding 15px
+    background #f8f8f8
+    color darken(#a1a1a1, 20)
+    font 14px Open Sans
+    flex-grow 1

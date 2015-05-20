@@ -1,0 +1,57 @@
+
+<html>
+<head>
+  <title>Liveblog Demo</title>
+  <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.11.5/vue.min.js"></script>
+  <script src="http://cdn.polyfill.io/v1/polyfill.js?features=fetch"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" type="text/css">
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+
+  <header>
+    <div v-if="user.username" class="user"><i class="fa fa-user"></i> Logged in as {{user.username}}</div>
+    <div v-if="!user.username" class="user">
+      <i class="fa fa-user"></i>&nbsp;
+      <a href="#" v-on="click: authShow = 'create'">Create</a> |
+      <a href="#" v-on="click: authShow = 'login'">Login</a>
+    </div>
+    <h1>Liveblog</h1>
+  </header>
+
+  <div id="create" class="auth" v-if="authShow == 'create'">
+    <i class="fa fa-close close" v-on="click: authShow = null"></i>
+    <input type="text" v-model="username" placeholder="username">
+    <input type="password" v-model="password" placeholder="password">
+    <button type="button" v-on="click: login('create')">Create</button>
+    <div v-if="authError" class="error">{{authError}}</div>
+  </div>
+
+  <div id="login" class="auth" v-if="authShow == 'login'">
+    <i class="fa fa-close close" v-on="click: authShow = null"></i>
+    <input type="text" v-model="username" placeholder="username">
+    <input type="password" v-model="password" placeholder="password">
+    <button type="button" v-on="click: login('login')">Login</button>
+    <div v-if="authError" class="error">{{authError}}</div>
+  </div>
+
+  <ul id="messages">
+    <div id="warning" v-if="!user.username">Please Login to See the Liveblog</div>
+    <li class="message" v-repeat="messages">
+      <span class="sender">{{sender}}</span>
+      <span class="time">{{time | moment '(h:mm A)' }}</span>
+      <p class="text">{{text}}</p>
+    </li>
+  </ul>
+
+  <div id="messagebox" v-if="user.admin">
+    <textarea v-model="message" v-on="keyup:send | key enter" placeholder="Type your message here"></textarea>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
