@@ -4,7 +4,7 @@
     "bluebird": "^2.9.25",
     "body-parser": "^1.12.3",
     "express": "^4.12.3",
-    "express-jwt": "^3.0.0",
+    "express-jwt": "^6.0.0",
     "jsonwebtoken": "^5.0.0",
     "pubnub": "^3.7.10",
     "rethinkdb": "^2.0.0",
